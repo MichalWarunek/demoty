@@ -1,0 +1,63 @@
+<% comments.each do |comment| %>  
+  <div class="comments-show">
+    <div class="comment center">
+
+
+
+      <h1><%= comment.body %><br></h1>
+        <strong>Dodano <%=comment.created_at.strftime(" %d.%m.%Y o %H:%M")%> przez: 
+
+       <%= link_to comment.user.name, comment.user if comment.user%>
+       </strong>
+
+<% if comment.user == current_user %> 
+ <br>
+
+      <%= link_to :back, class: "btn btn-success", method: :get do %>
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+        <span class="badge"><%= comment.get_upvotes.size %></span>
+        <%end %>
+      <%= link_to :back, class: "btn btn-danger", method: :get do %>
+        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+        <span class="badge"><%= comment.get_downvotes.size %></span>
+        <%end %>
+
+  <% else %>
+ <div class="panel panel-footer text-center">
+        <%= link_to like_comment_path(comment), class: "btn btn-success", method: :put do %>
+        <span class="badge"><%= comment.get_upvotes.size %></span>
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+        <%end %>
+
+        <%= link_to unlike_comment_path(comment), class: "btn btn-danger", method: :put do %>
+        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+        <span class="badge"><%= comment.get_downvotes.size %></span>
+
+      <% end %>
+
+ <% end %>
+
+     <%if user_signed_in? %>
+      <div class="comment-nav"><a href="#" class="comment-reply">Odpowiedz</a></div>
+      <div class="reply-form">
+        <%= form_for [@post,@new_comment] do |f| %>
+          <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
+          <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
+          <%= f.hidden_field :comment_id, value: comment.id %>
+          <div class="field form-group">
+            <%= f.text_area :body, class: 'form-control' %>
+          </div>
+          <div class="field form-group">
+            <%= submit_tag "Odpowiedz", class: 'btn btn-primary' %>
+          </div>
+
+
+       
+
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+    <%= render partial: "comments/reply", locals: {comments: comment.children} %>
+  </div>
+<% end %>  

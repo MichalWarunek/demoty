@@ -1,0 +1,15 @@
+<%if user_signed_in? %>
+
+<%= form_for [@post,@new_comment] do |f| %>  
+  <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
+  <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
+  <div class="field form-group">
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+  
+  <div class="field form-group">
+    <%= submit_tag "Dodaj komentarz", class: 'btn btn-primary' %>
+  </div>
+
+<% end %> 
+<% end %>
