@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'posts/losowy'
   
 
+  
+
   resources :users, only: [:show, :edit, :update] 
   resources :posts do
 
