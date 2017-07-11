@@ -6,7 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
   </head>
 
   <body style="background-color: gray">
@@ -22,47 +22,39 @@
         <span class="icon-bar"></span>
       </button>
 
-      
-
-       <ul class="nav navbar-nav">
-        <li><%= link_to('MilionSposobówNaMilion', root_path, class: "navbar-brand")%></li>
-            <li><%= link_to('Poczekalnia', posts_poczekalnia_path)%></li>
-               <li><%= link_to('Top 10', posts_top_path)%></li>
-          <li><%= link_to('Losowy', posts_losowy_path)%></li>
-          
+        <%= link_to('MilionSposobówNaMilion', root_path, class: "navbar-brand")%>
+        
         
     </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-    
+      <ul class="nav navbar-nav navbar-left">
+
+    <li><%= link_to('Poczekalnia', posts_poczekalnia_path)%></li>
+    <li><%= link_to('Top 10', posts_top_path)%></li>
+    <li><%= link_to('Losowy', posts_losowy_path)%></li>
+        
+      </ul>
+ 
       <ul class="nav navbar-nav navbar-right">
-      <ul class="nav navbar-nav">
       
       <%if user_signed_in? %>
-      <li><%= link_to('Dodaj', new_post_path)%></li>
-        <li>
-
-
-          <%= link_to current_user.name, current_user%>
-      
-       </li>
-
-         <li><%= link_to(avatar_for(current_user, size: 50), current_user) %></li>
-
-        <%end%>
-       </ul>
-        <li>
-        <% if user_signed_in? %>  
-            
-            <%= link_to('Wyloguj', destroy_user_session_path, :method => :delete) %>      
-        
-        <% else %>
-           
-            <%= link_to('Zaloguj', new_user_session_path)  %>  
           
-        <% end %>
+          <li><%= link_to('Dodaj', new_post_path)%></li> 
+          <li><%= link_to current_user.name, current_user%></li>
+          <li><%= link_to(avatar_for(current_user, size: 50), current_user) %></li>
+          <li><%= link_to('Wyloguj', destroy_user_session_path, :method => :delete) %></li>
+                
+        
+      <% else %>
+           
+           <li> <%= link_to('Zaloguj', new_user_session_path)  %>  </li>
+          
+      <% end %>
             
-          </li>
+          
       </ul>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
