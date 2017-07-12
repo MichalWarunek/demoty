@@ -1,0 +1,11 @@
+<div class="panel panel-default col-md-12">
+  
+    <h4 class="media-heading">
+      <%= conversation.originator.name %> <br>
+      <small><b>Temat: </b><%= conversation.subject %></small><br>
+      <small><b>Data: </b><%=  conversation.messages.last.created_at.strftime(" %d.%m.%Y o %H:%M") %></small>
+    </h4>
+    <%= truncate conversation.messages.last.body, length: 145 %><br>
+    <%= link_to "Zobacz", conversation_path(conversation)  %>
+  
+</div>

@@ -40,8 +40,9 @@
       
       <%if user_signed_in? %>
           
+          <li><%= link_to("Wiadomości (#{unread_messages_count}) ", mailbox_inbox_path) %></li>
           <li><%= link_to('Dodaj', new_post_path)%></li> 
-          <li><%= link_to current_user.name, current_user%></li>
+          <li><%= link_to "Witaj #{current_user.name}",current_user %></li>
           <li><%= link_to(avatar_for(current_user, size: 50), current_user) %></li>
           <li><%= link_to('Wyloguj', destroy_user_session_path, :method => :delete) %></li>
                 
