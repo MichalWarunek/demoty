@@ -9,13 +9,13 @@
 
 <%= avatar_for(@user, size: 50) %>
 
-<h1>Nick: <%= @user.name %></h1>
+<h4>Nick: <%= @user.name %></h4>
 
-<h2>Jesteś z nami od <%= @user.created_at.strftime(" %d.%m.%Y o %H:%M") %></h2>
+<h4>Jesteś z nami od <%= @user.created_at.strftime(" %d.%m.%Y o %H:%M") %></h4>
 
-<h2>Ilość punktów za obrazki: <%= @user.posts.sum(&:cached_votes_score)%></h2>
+<h4>Ilość punktów za obrazki: <%= @user.posts.sum(&:cached_votes_score)%></h4>
 
-<h2>Ilość punktów za komentarze: <%= @user.comments.sum(&:cached_votes_score)%></h2>
+<h4>Ilość punktów za komentarze: <%= @user.comments.sum(&:cached_votes_score)%></h4>
 
 
 <%if user_signed_in? %>

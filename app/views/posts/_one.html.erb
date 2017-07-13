@@ -57,3 +57,13 @@
 
 
 <%end%>
+
+ <%if user_signed_in? %>  
+       
+       <% if current_user.admin == true %>
+
+        <%= link_to 'Usuń', @post, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-danger' %>
+
+       <%end%>
+       
+ <%end%>

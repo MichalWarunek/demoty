@@ -19,8 +19,9 @@
        </h4>
 
 
+    
 
-       <% if post.user == current_user %>
+  <% if post.user == current_user %>
 
     
       
@@ -28,10 +29,6 @@
         <div class="panel panel-footer text-center">
 
    
-       <% if current_user.admin == true %>
-
-        <%= link_to 'Usuń', post, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-danger' %>
-        <%end%>
 
 
         <%= link_to root_path, class: "btn btn-success", method: :get do %>
@@ -43,9 +40,10 @@
         <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
         <span class="badge"><%= post.get_downvotes.size %></span>
         <% end %>
-    
+        
+        <%= link_to 'Usuń', post, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-danger' %>    
 
-        <% else %>
+  <% else %>
 
         
         <div class="panel panel-footer text-center">
@@ -53,12 +51,25 @@
         <span class="badge"><%= post.get_upvotes.size %></span>
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
         <%end %>
-         <%= link_to unlike_post_path(post), class: "btn btn-danger", method: :put do %>
-             <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+        <%= link_to unlike_post_path(post), class: "btn btn-danger", method: :put do %>
+        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
         <span class="badge"><%= post.get_downvotes.size %></span>
       
 
-     <% end %>
+  <% end %>
+
+ <%if user_signed_in? %>  
+       
+       <% if current_user.admin == true %>
+
+        <%= link_to 'Usuń', post, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-danger' %>
+
+       <%end%>
+
+ <%end%>
+
+     
+
      <% end %>
   
   </div>

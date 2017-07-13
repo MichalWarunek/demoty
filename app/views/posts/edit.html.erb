@@ -1,6 +1,11 @@
-<h1>Editing Post</h1>
+<h1>Edytuj</h1>
 
 <%= render 'form', post: @post %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+
+ <div class="text-center">
+
+<%= link_to 'Pokaż', @post , class: 'btn btn-primary' %> 
+<%= link_to 'Powrót', posts_path , class: 'btn btn-success' %>
+
+</div>
