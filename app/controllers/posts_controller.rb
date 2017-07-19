@@ -64,6 +64,8 @@ class PostsController < ApplicationController
 
   def show
     @post           = Post.find(params[:id])
+    
+     
       
     if user_signed_in?
       @new_comment    = Comment.build_from(@post, current_user.id, "")

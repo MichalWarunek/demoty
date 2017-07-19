@@ -1,5 +1,8 @@
-<% comments.each do |comment| %>  
-  
+
+
+<% @user_comments.each do |comment| %>  
+<div class="panel panel-default col-md-offset-3 col-md-6">  
+<div class="panel panel-footer center">  
 <div class="comment center">
 
       <div class="left">
@@ -7,52 +10,31 @@
 
           <h5>Dodano <%=comment.created_at.strftime(" %d.%m.%Y o %H:%M")%> przez: 
               <%= link_to comment.user.name, comment.user if comment.user%>
+              do obrazka: 
+              
+              <%= link_to 'Obrazek', post_path(comment.commentable_id) %>
+               
+
          
           </h5>
-          
       
+
       </div>
 
 
-
-
                <%if comment.parent_id.blank?%>
-               <div class="panel panel-default col-md-12 komentarz">
+               <div class="panel panel-default col-md-12 komentarz" >
                   <h4><%= comment.body %><br></h4>
+
                <%else%>
+
                <div class="panel panel-default col-md-11 odpowiedz">
                   <h5><%= comment.body %><br></h5>              
                <%end%>
 
 </div>
-
-<%if user_signed_in? %>
-
-   <%if comment.parent_id.blank? %>
-
-      <div class="comment-nav"><a class="comment-reply">Odpowiedz</a></div>
-      
-      <%end%>
-
-      <div class="reply-form">
-        <%= form_for [@post,@new_comment] do |f| %>
-          <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
-          <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
-          <%= f.hidden_field :comment_id, value: comment.id %>
-          <div class="field form-group">
-            <%= f.text_area :body, class: 'form-control' %>
-          </div>
-          <div class="field form-group">
-            <%= submit_tag "Odpowiedz", class: 'btn btn-primary' %>
-          </div>
-
-        <% end %>
-
-        <%else%>
+</div>
 <div class="comment-nav">
-
-        <% end %>
-
       
     </div>
      
@@ -81,8 +63,9 @@
   <% end %>
 
  <% end %>
-
+</div>
   </div>   
-    <%= render partial: "comments/reply", locals: {comments: comment.children} %>
-  
+
 <% end %>  
+
+

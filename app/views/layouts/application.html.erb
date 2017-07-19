@@ -61,12 +61,25 @@
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+
 </nav>
   
   
   <% flash.each do |name, msg| %>
   <%= content_tag(:div, msg, class: "alert alert-success") %>
   <% end %>
+
+
     <%= yield %>
-  </body>
+    <br>
+<div class="col-md-12">
+<div class="panel panel-footer center">
+Wszelkie obrazki w serwisie są generowane przez użytkowników serwisu i jego właściciel nie bierze za nie odpowiedzialności.
+<br>
+<%= link_to "Regulamin", footer_regulamin_path %> |
+<%= link_to "Kontakt", footer_kontakt_path %> |
+<%= link_to "Polityka prywatności", footer_polityka_path %>
+
+</div>
+</div>
 </html>

@@ -61,7 +61,9 @@
 
    <% end %>
 
-   <%if user_signed_in? %>  
+  
+   <% end %>
+ <%if user_signed_in? %>  
        
        <% if current_user.admin == true %>
 
@@ -70,8 +72,6 @@
         <%= link_to "Zatwierdź", post_path(post, "post[glowna]" => true), method: :put, data: {confirm: "Na pewno?"}, class: 'btn btn-primary' %>
         
         <%end%>
-
-   <% end %>
 
   <% end %>
 

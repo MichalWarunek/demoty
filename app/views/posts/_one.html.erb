@@ -12,6 +12,7 @@
 
   <%=link_to @post.content, "http://#{@post.content}" %>
 
+
 </p>
 
 <p>
@@ -24,6 +25,8 @@
 
        <%= link_to @post.user.name, @post.user if @post.user%>
        </strong>
+       
+        
 </div>
 
 <% if @post.user == @current_user %>

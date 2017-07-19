@@ -46,3 +46,50 @@ img {
     max-width: 100%;
     height: auto;
 }
+.comments-header {
+  margin-bottom: 10px;
+}
+
+.comments-container {
+  p {
+    margin-bottom: 0px;
+  }
+  .comment-nav {
+    margin-left: 5px;
+    margin-bottom: 10px;
+
+    a {
+      font-size: 10px;
+      font-weight: bold;
+      color: #888;
+    }
+  }
+}
+
+.reply-form {
+  display: none;
+}
+
+.comments-show {
+  margin-left: 25px;
+}
+#GlownaSec
+{
+  display: none;
+}
+#PoczekalniaSec
+{
+  display: none;
+}
+#CommentSec
+{
+  display: none;
+}
+.komentarz
+{
+  background-color: #C0C0C0;
+}
+.odpowiedz
+{
+ background-color: #DCDCDC; 
+}

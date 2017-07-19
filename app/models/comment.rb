@@ -10,9 +10,11 @@ class Comment < ActiveRecord::Base
   #acts_as_votable
 
   belongs_to :commentable, :polymorphic => true
+  
 
   # NOTE: Comments belong to a user
   belongs_to :user
+  belongs_to :post
   
 
   # Helper class method that allows you to build a comment
@@ -29,6 +31,8 @@ class Comment < ActiveRecord::Base
   def has_children?
     self.children.any?
   end
+
+
 
   # Helper class method to lookup all comments assigned
   # to all commentable types for a given user.

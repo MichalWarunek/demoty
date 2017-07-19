@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'posts/poczekalnia'
   get 'posts/top'
   get 'posts/losowy'
+  get 'footer/polityka'
+  get 'footer/regulamin'
+  get 'footer/kontakt'
   
 
   get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
