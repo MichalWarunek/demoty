@@ -50,6 +50,12 @@
         
         <div class="panel panel-footer text-center">
 
+        <% if user_signed_in? %>
+        <%= link_to :back, class: "btn btn-warning", method: :get do %>
+        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+        <%end %>
+        <%end %>
+
         <%= link_to like_post_path(post), class: "btn btn-success", method: :put do %>
         <span class="badge"><%= post.get_upvotes.size %></span>
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>

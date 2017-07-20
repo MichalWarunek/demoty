@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
 
 
+  resources :favorite_posts, only: [:create, :destroy]
+
 
   # conversations
   resources :conversations do

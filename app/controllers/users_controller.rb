@@ -6,6 +6,7 @@ def show
 	@user_posts = @user.posts.where(:glowna => true)
 	@user_posts_poczekalnia = @user.posts.where(:glowna => false)
 	@user_comments=@user.comments
+	@user_favorites=@user.favorite_posts
 	
 end
 

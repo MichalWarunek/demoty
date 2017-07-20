@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712101010) do
+ActiveRecord::Schema.define(version: 20170719143122) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "commentable_id"
@@ -40,6 +40,23 @@ ActiveRecord::Schema.define(version: 20170712101010) do
     t.index ["cached_weighted_total"], name: "index_comments_on_cached_weighted_total"
     t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorite_posts", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "favorited_type"
+    t.integer  "favorited_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["favorited_type", "favorited_id"], name: "index_favorites_on_favorited_type_and_favorited_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|

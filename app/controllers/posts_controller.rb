@@ -134,7 +134,23 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-   
+   # Add and remove favorite recipes
+  # for current_user
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @post
+      redirect_to :back, notice: 'You favorited #{@post.name}'
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@post)
+      redirect_to :back, notice: 'Unfavorited #{@post.name}'
+
+    else
+      # Type missing, nothing happens
+      redirect_to :back, notice: 'Nothing happened.'
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

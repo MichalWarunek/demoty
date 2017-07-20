@@ -31,9 +31,13 @@
 
 <% if @post.user == @current_user %>
 
+
  <div class="panel panel-footer text-center">
+
 <%= link_to 'Edytuj', edit_post_path(@post), class: 'btn btn-primary' %> 
 <%= link_to 'Usuń', @post, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-danger' %>
+
+
 
 <%= link_to :back, class: "btn btn-success", method: :get do %>
         <span class="badge"><%= @post.get_upvotes.size %></span>
@@ -47,6 +51,26 @@
 
         <% else %>
  <div class="panel panel-footer text-center">
+
+        <% if user_signed_in? %>
+
+
+  <% unless current_user.favorite_posts.exists?(id: @post.id)%>
+
+              <%= link_to favorite_posts_path(post_id: @post), class: "btn btn-warning", method: :post do %>
+              <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+              <%end%>
+
+   <% else %>
+              <%= link_to favorite_post_path(@post),class: "btn btn-warning", method: :delete do %>
+              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              <% end %>
+   <% end %>
+
+
+<%end %>
+
+
         <%= link_to like_post_path(@post), class: "btn btn-success", method: :put do %>
         <span class="badge"><%= @post.get_upvotes.size %></span>
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
@@ -55,6 +79,8 @@
         <%= link_to unlike_post_path(@post), class: "btn btn-danger", method: :put do %>
         <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
         <span class="badge"><%= @post.get_downvotes.size %></span>
+
+
 
       <% end %>
 

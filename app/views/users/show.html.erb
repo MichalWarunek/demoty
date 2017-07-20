@@ -37,6 +37,7 @@
 <input type='button' id='glowna-link' value='Główna', class="btn btn-success">
 <input type='button' id='poczekalnia-link' value='Poczekalnia', class="btn btn-primary">
 <input type='button' id='comment-link' value='Komentarze', class="btn btn-danger">
+<input type='button' id='ulubione-link' value='Ulubione', class="btn btn-warning">
 
  </div>
 
@@ -81,4 +82,19 @@
 
 
 		<%= render partial: "users/comments" %>
+</div>
+
+
+<div id="UlubioneSec">
+	<div class="panel panel-default col-md-offset-3 col-md-6">
+    
+
+	<div class="left">
+		<h2>Ulubione: </h2>
+	</div>
+
+   </div>
+
+
+		<%= render partial: "users/ulubione" %>
 </div>
