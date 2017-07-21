@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users 
+  devise_for :users , :controllers => {:sessions => "sessions"} 
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   root 'posts#index'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   get 'footer/polityka'
   get 'footer/regulamin'
   get 'footer/kontakt'
+  get 'users/ranking'
   
 
   get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox

@@ -1,0 +1,33 @@
+<% @users.each_with_index do |user,index| %>
+
+ <div class="panel panel-default col-md-offset-4 col-md-4 right">
+ <br>
+     
+     <div class="left">
+
+  <% if index == 0 %>
+<span class="glyphicon glyphicon-certificate blue" aria-hidden="true"></span>
+
+  <% else %>
+  <% end %>
+<h1>#<%= index+1 %></h1>
+</div>
+
+			<%if user.banned? %>
+			<h1 class="red">[Zbanowany]</h1>
+			<%end%>
+
+      <h1> <%=link_to user.name, user%></h1>
+       <h4>Liczba punktów: <%= user.comments.sum(&:cached_votes_score)+user.posts.sum(&:cached_votes_score)%></h4>
+      <h6>W tym  <%= user.posts.sum(&:cached_votes_score)%> za obrazki</h6>
+	  <h6>oraz <%= user.comments.sum(&:cached_votes_score)%> za komentarze</h6>
+
+
+
+
+</div>
+
+
+<%end%>
+
+<!-- glyphicon glyphicon-certificate -->

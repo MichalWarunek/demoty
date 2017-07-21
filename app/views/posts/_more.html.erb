@@ -5,13 +5,17 @@
 
      
        <%= link_to image_tag(post.image.url(:medium)), post %>
-       <h1> <%= post.name %></h1>
+       <h1><%= post.name %></h1>
        <h2><%= post.title %></h2>
        <p>Źródło: <%=link_to post.content, "http://#{post.content}" %></p>
         
        <p>Tagi: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
        <br> 
        <strong>Dodano <%=post.created_at.strftime(" %d.%m.%Y o %H:%M")%> przez: 
+
+<%if post.user.banned? %>
+<span class="red">[Zbanowany]</span>
+<%end%>
 
        <%= link_to post.user.name, post.user if post.user%>
        </strong>

@@ -17,7 +17,7 @@
 $panel-bg: #e7e7e7; 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "chosen";
+
 
 h1 {
     text-align: center;
@@ -39,6 +39,9 @@ img {
 }
 .left{
 	text-align: left;
+}
+.right{
+  text-align: right;
 }
 .avatar-image{
 	border-radius: 50%;
@@ -97,4 +100,13 @@ img {
 .odpowiedz
 {
  background-color: #DCDCDC; 
+}
+.blue
+{
+  color:blue;
+  font-size:300%;
+}
+.red
+{
+  color:red;
 }

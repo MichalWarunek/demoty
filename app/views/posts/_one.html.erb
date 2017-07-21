@@ -23,6 +23,10 @@
 
 <strong>Dodano <%=@post.created_at.strftime(" %d.%m.%Y o %H:%M")%> przez: 
 
+<%if @post.user.banned? %>
+<span class="red">[Zbanowany]</span>
+<%end%>
+
        <%= link_to @post.user.name, @post.user if @post.user%>
        </strong>
        

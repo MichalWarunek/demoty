@@ -19,6 +19,12 @@
        <br> 
        <strong>Dodano <%=post.created_at.strftime(" %d.%m.%Y o %H:%M")%> przez: 
 
+
+          <%if post.user.banned? %>
+          <span class="red">[Zbanowany]</span>
+          <%end%>
+
+
        <%= link_to post.user.name, post.user if post.user%>
        </strong>
         <h4> Ilość komentarzy : (<%= link_to post.comment_threads.count == 0 ? "0" : post.comment_threads.count, post %>)
