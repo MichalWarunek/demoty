@@ -50,6 +50,7 @@ gem 'mini_magick', '3.8.0'
 gem 'acts_as_commentable_with_threading', '~> 2.0.1'
 gem 'mailboxer'
 gem 'chosen-rails'
+gem 'bootstrap-chosen-rails'
 
 
 group :development, :test do

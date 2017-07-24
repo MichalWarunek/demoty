@@ -11,6 +11,8 @@
 
   <body style="background-color: gray">
 
+
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
 
@@ -65,10 +67,12 @@
 
 </nav>
   
+<% flash.each do |key, value| %>
+  <div class="text-center <%= flash_class(key) %>">
+    <%= value %>
+  </div>
+<% end %>
   
-  <% flash.each do |name, msg| %>
-  <%= content_tag(:div, msg, class: "alert alert-success") %>
-  <% end %>
 
 
     <%= yield %>
@@ -80,7 +84,11 @@ Wszelkie obrazki w serwisie są generowane przez użytkowników serwisu i jego w
 <%= link_to "Regulamin", footer_regulamin_path %> |
 <%= link_to "Kontakt", footer_kontakt_path %> |
 <%= link_to "Polityka prywatności", footer_polityka_path %>
+<br>
+<br>
+
+<div class="fb-page" data-href="https://www.facebook.com/betweendastars/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/betweendastars/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/betweendastars/">Paris Platynov</a></blockquote></div>
 
 </div>
-</div>
+
 </html>

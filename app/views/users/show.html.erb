@@ -21,7 +21,7 @@
 
 <h4>Miejsce w rankingu: (?/<%= @users_count%>)</h4>
 
-<h5><%= @user.banned %></h5>
+
 
 
 <%if user_signed_in? %>
@@ -62,58 +62,27 @@
 
 
 <div id="GlownaSec">
-   <div class="panel panel-default col-md-offset-3 col-md-6">
-    
-
-    <div class="left">
-		<h2>Obrazki na głównej: </h2>
-	</div>
-
-   </div>
 
          <%= render partial: "users/glowna" %>
 </div>
 
 <div id="PoczekalniaSec">
-	<div class="panel panel-default col-md-offset-3 col-md-6">
-    
-
-	<div class="left">
-		<h2>Obrazki w poczekalni: </h2>
-	</div>
-
-	</div>
-
 
 		<%= render partial: "users/poczekalnia" %>
 </div>
 
 
 <div id="CommentSec">
-	<div class="panel panel-default col-md-offset-3 col-md-6">
-    
-
-	<div class="left">
-		<h2>Komentarze: </h2>
-	</div>
-
-   </div>
-
-
+	
 		<%= render partial: "users/comments" %>
 </div>
 
 
 <div id="UlubioneSec">
-	<div class="panel panel-default col-md-offset-3 col-md-6">
-    
 
-	<div class="left">
-		<h2>Ulubione: </h2>
-	</div>
-
-   </div>
-
+ 
 
 		<%= render partial: "users/ulubione" %>
+
+ 
 </div>

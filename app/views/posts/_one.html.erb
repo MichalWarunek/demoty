@@ -33,6 +33,12 @@
         
 </div>
 
+
+<div class="center">
+<%= link_to "UDOSTĘPNIJ", "https://www.facebook.com/sharer/sharer.php?u=#{post_url(@post)}", :target => :blank, class: 'btn btn-primary' %>    
+</div>
+
+
 <% if @post.user == @current_user %>
 
 
@@ -91,6 +97,7 @@
 
 <%end%>
 
+
  <%if user_signed_in? %>  
        
        <% if current_user.admin == true %>
@@ -100,3 +107,4 @@
        <%end%>
        
  <%end%>
+

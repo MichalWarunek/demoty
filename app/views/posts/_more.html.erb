@@ -9,7 +9,7 @@
        <h2><%= post.title %></h2>
        <p>Źródło: <%=link_to post.content, "http://#{post.content}" %></p>
         
-       <p>Tagi: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+       <p>Tagi: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(",") %>
        <br> 
        <strong>Dodano <%=post.created_at.strftime(" %d.%m.%Y o %H:%M")%> przez: 
 
@@ -22,8 +22,9 @@
         <h4> Ilość komentarzy : (<%= link_to post.comment_threads.count == 0 ? "0" : post.comment_threads.count, post %>)
        </h4>
 
-
-    
+<div class="center">
+<%= link_to "UDOSTĘPNIJ", "https://www.facebook.com/sharer/sharer.php?u=#{post_url(post)}", :target => :blank, class: 'btn btn-primary' %>    
+</div>
 
   <% if post.user == current_user %>
 

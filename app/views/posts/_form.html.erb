@@ -36,8 +36,8 @@
     <%= f.text_area :content, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :tagi, "Oddziel przecinkami" %>
-    <%= f.text_field :tag_list, class: 'form-control' %>
+    <%= f.label :tag ,"Tagi (oddziel przecinkami)" %>
+    <%= f.text_field :tag_list,value: @post.tag_list.join(","), class: 'form-control' %>
   </div>
 
   <div class="actions">

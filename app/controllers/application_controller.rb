@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def banned?
     if current_user.present? && current_user.banned?
       sign_out current_user
-      flash[:error] = "Konto użytkownika zostało zablokowane"
+      # flash[:error] = "Konto użytkownika zostało zablokowane"
       root_path
     end
   end
