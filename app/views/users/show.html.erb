@@ -21,13 +21,37 @@
 
 <h4>Miejsce w rankingu: (?/<%= @users_count%>)</h4>
 
+<h4>Obserwujących: <%= @user.followers_count %></h4>
+<h4>Obserwowanych: <%= @user.follow_count %></h4>
+
 
 
 
 <%if user_signed_in? %>
+
+
+
 <% if (@user.name == current_user.name) %>
-<h2><%= link_to "EDYTUJ", edit_user_registration_path(@user) %>
+<h2><%= link_to "EDYTUJ", edit_user_registration_path(@user) %></h2>
+<%else%>
+
+ <% unless @current_user.following?(@user)%>
+ 		 
+ 		    <%= link_to follow_user_path(@user), class: "follow",method: :get do %>
+ 		    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+              <%end%>
+
+   <% else %>
+        
+            <%= link_to unfollow_user_path(@user), class: "unfollow",method: :get do %>
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              <%end%>
+   <% end %>
+
+
+
 <% end %>
+
 
 <%if current_user.admin? %>
 <div class="center">
@@ -57,6 +81,10 @@
 <input type='button' id='poczekalnia-link' value='Poczekalnia', class="btn btn-primary">
 <input type='button' id='comment-link' value='Komentarze', class="btn btn-danger">
 <input type='button' id='ulubione-link' value='Ulubione', class="btn btn-warning">
+<input type='button' id='followers-link' value='Obserwujący', class="btn btn-success">
+<input type='button' id='follow-link' value='Obserwowani', class="btn btn-primary">
+
+
 
  </div>
 
@@ -81,8 +109,19 @@
 <div id="UlubioneSec">
 
  
-
 		<%= render partial: "users/ulubione" %>
 
  
+</div>
+
+
+<div id="FollowersSec">
+
+		<%= render partial: "users/followers" %>
+ 
+</div>
+
+<div id="FollowSec">
+
+		<%= render partial: "users/follow" %>
 </div>

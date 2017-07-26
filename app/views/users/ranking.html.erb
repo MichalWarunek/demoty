@@ -17,6 +17,7 @@
 			<h1 class="red">[Zbanowany]</h1>
 			<%end%>
 
+     <%= avatar_for(user, size: 50) %>
       <h1> <%=link_to user.name, user%></h1>
        <h4>Liczba punktów: <%= user.comments.sum(&:cached_votes_score)+user.posts.sum(&:cached_votes_score)%></h4>
       <h6>W tym  <%= user.posts.sum(&:cached_votes_score)%> za obrazki</h6>

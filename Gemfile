@@ -51,6 +51,7 @@ gem 'acts_as_commentable_with_threading', '~> 2.0.1'
 gem 'mailboxer'
 gem 'chosen-rails'
 gem 'bootstrap-chosen-rails'
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 
 
 group :development, :test do

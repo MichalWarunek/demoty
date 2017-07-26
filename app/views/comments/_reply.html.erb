@@ -10,6 +10,7 @@
               <%if comment.user.banned? %>
               <span class="red">[Zbanowany]</span>
               <%end%>
+             
               <%= link_to comment.user.name, comment.user if comment.user%>
          
           </h5>

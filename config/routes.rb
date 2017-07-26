@@ -30,7 +30,14 @@ Rails.application.routes.draw do
       post :untrash
     end
   end
-  
+
+  #followers
+  resources :users do
+  member do
+    get :follow
+    get :unfollow
+  end
+end
 
   resources :users, only: [:show, :edit, :update] 
   resources :posts do

@@ -95,6 +95,14 @@ img {
 {
   display: none;
 }
+#FollowersSec
+{
+  display: none;
+}
+#FollowSec
+{
+  display: none;
+}
 .komentarz
 {
   background-color: #C0C0C0;
@@ -111,4 +119,18 @@ img {
 .red
 {
   color:red;
+}
+.follow
+{
+  color:lime;
+  font-size:200%;
+}
+.unfollow
+{
+  color:red;
+  font-size:200%;
+}
+.logo
+{
+  height:100px;
 }

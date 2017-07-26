@@ -24,6 +24,8 @@ def edit
 
 end
 
+
+
 def update
 	 @user = User.find(params[:id])
     if @user.update(user_params)
@@ -33,6 +35,20 @@ def update
       render 'edit'
     end
 end
+
+  def follow
+      @user = User.find(params[:id])
+      current_user.follow(@user)
+      redirect_to root_path
+  end
+
+  def unfollow
+    @user = User.find(params[:id])
+    current_user.stop_following(@user)
+    redirect_to root_path
+  end
+
+
 
 
  def user_params
