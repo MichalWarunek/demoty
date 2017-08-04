@@ -1,34 +1,43 @@
 <% @users.each_with_index do |user,index| %>
 
  <div class="panel panel-default col-md-offset-4 col-md-4 right">
- <br>
-     
-     <div class="left">
-
+ 
+  <div class="center">
+  
   <% if index == 0 %>
-<span class="glyphicon glyphicon-certificate blue" aria-hidden="true"></span>
+
+      <span class="glyphicon glyphicon-certificate blue" aria-hidden="true"></span>
 
   <% else %>
+
   <% end %>
-<h1>#<%= index+1 %></h1>
-</div>
+  
+        <h4><b>#<%= index+1 %><b></h4>
+  </div>
+     
 
-			<%if user.banned? %>
-			<h1 class="red">[Zbanowany]</h1>
-			<%end%>
+  <ul class="nav navbar-nav navbar-left margin-left">
 
-     <%= avatar_for(user, size: 50) %>
-      <h1> <%=link_to user.name, user%></h1>
-       <h4>Liczba punktów: <%= user.comments.sum(&:cached_votes_score)+user.posts.sum(&:cached_votes_score)%></h4>
+      <%= avatar_for(user, size: 50) %>
+      <%if user.banned? %>
+      <h5 class="red left">[Zbanowany]</h5>
+      <%end%>
+      <h4> <%=link_to user.name, user%></h4>
+      
+
+  </ul>
+
+
+  <ul class="nav navbar-nav navbar-right margin-right">
+
+      <h4>Liczba punktów: <%= user.comments.sum(&:cached_votes_score)+user.posts.sum(&:cached_votes_score)%></h4>
       <h6>W tym  <%= user.posts.sum(&:cached_votes_score)%> za obrazki</h6>
-	  <h6>oraz <%= user.comments.sum(&:cached_votes_score)%> za komentarze</h6>
+	    <h6>oraz <%= user.comments.sum(&:cached_votes_score)%> za komentarze</h6>
 
-
+  </ul>
 
 
 </div>
-
 
 <%end%>
 
-<!-- glyphicon glyphicon-certificate -->

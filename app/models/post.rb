@@ -6,7 +6,9 @@ class Post < ApplicationRecord
  	 validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
  	 belongs_to :user
  	 has_many :comments
-
+ 	
+ 	#tutaj
+ 	has_many :notifications, dependent: :destroy  
  	 
 
 end

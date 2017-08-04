@@ -22,6 +22,11 @@ Rails.application.routes.draw do
   resources :favorite_posts, only: [:create, :destroy]
 
 
+ #notifications
+    get 'notifications', to: 'notifications#index'  
+    get 'notifications/:id/link_through', to: 'notifications#link_through',
+                                        as: :link_through
+
   # conversations
   resources :conversations do
     member do

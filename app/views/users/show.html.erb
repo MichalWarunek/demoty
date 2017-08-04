@@ -4,71 +4,92 @@
 
 <div class="left">
 
-
-
-
 <%= avatar_for(@user, size: 50) %>
+
 <%if @user.banned? %>
-<span class="red">[Zbanowany]</span>
+
+    <span class="red">[Zbanowany]</span>
+
 <%end%>
-<h4>Nick: <%= @user.name %></h4>
 
-<h4>Jesteś z nami od <%= @user.created_at.strftime(" %d.%m.%Y o %H:%M") %></h4>
+      <h4>Nick: <%= @user.name %></h4>
+      <h4>Jesteś z nami od <%= @user.created_at.strftime(" %d.%m.%Y o %H:%M") %></h4>
+      <h4>Ilość punktów za obrazki: <%= @user.posts.sum(&:cached_votes_score)%></h4>
+      <h4>Ilość punktów za komentarze: <%= @user.comments.sum(&:cached_votes_score)%></h4>
 
-<h4>Ilość punktów za obrazki: <%= @user.posts.sum(&:cached_votes_score)%></h4>
+      <% @users.each_with_index do |user,index| %>
 
-<h4>Ilość punktów za komentarze: <%= @user.comments.sum(&:cached_votes_score)%></h4>
+ <div class="panel panel-default col-md-offset-4 col-md-4 right">
+ 
+  <div class="center">
+  
+  <% if index == 0 %>
 
-<h4>Miejsce w rankingu: (?/<%= @users_count%>)</h4>
+  <% else %>
 
-<h4>Obserwujących: <%= @user.followers_count %></h4>
-<h4>Obserwowanych: <%= @user.follow_count %></h4>
+  <% end %>
+  
+        <h4><b><%=index+1%><b></h4>
+        <h4><%=user.name%></h4>
+      
+  </div>
+  </div>
+  
+
+      <h4>Miejsce w rankingu: (<%=index+1%>/<%= @users_count%>)</h4>
+      <%end%>
+      <h4>Obserwujących: <%= @user.followers_count %></h4>
+      <h4>Obserwowanych: <%= @user.follow_count %></h4>
 
 
+      <!-- USER RANK-->
 
 
 <%if user_signed_in? %>
 
-
-
 <% if (@user.name == current_user.name) %>
-<h2><%= link_to "EDYTUJ", edit_user_registration_path(@user) %></h2>
+ 
+      <h2><%= link_to "EDYTUJ", edit_user_registration_path(@user) %></h2>
+
 <%else%>
 
  <% unless @current_user.following?(@user)%>
  		 
  		    <%= link_to follow_user_path(@user), class: "follow",method: :get do %>
  		    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-              <%end%>
+  
+  <%end%>
 
    <% else %>
         
             <%= link_to unfollow_user_path(@user), class: "unfollow",method: :get do %>
             <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              <%end%>
-   <% end %>
+              
+   <%end%>
 
+ <%end%>
 
-
-<% end %>
+<%end%>
 
 
 <%if current_user.admin? %>
+
 <div class="center">
+
 <%if @user.banned? %>
 
-
-<%= link_to "Przywróć", user_path(@user, "user[banned]" => false), method: :put, data: {confirm: "Na pewno?"}, class: 'btn btn-primary' %>
+      <%= link_to "Przywróć", user_path(@user, "user[banned]" => false), method: :put, data: {confirm: "Na pewno?"}, class: 'btn btn-primary' %>
 
 <%else%>
 
+      <%= link_to "Ban", user_path(@user, "user[banned]" => true), method: :put, data: {confirm: "Na pewno?"}, class: 'btn btn-danger' %>
+      <%end%>
 
-<%= link_to "Ban", user_path(@user, "user[banned]" => true), method: :put, data: {confirm: "Na pewno?"}, class: 'btn btn-danger' %>
-<%end%>
 </div>
+
 <%end%>
 
-<% end %>
+<%end%>
 
 </div>
 

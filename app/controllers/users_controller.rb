@@ -9,22 +9,22 @@ def show
 	@user_comments=@user.comments
 	@user_favorites=@user.favorite_posts
 	@users_count = User.all.count
+  @users = User.all
 
 	
 end
 
 
-
-
 def ranking
-	@users = User.all
+ # @users= User.joins(:posts).order("sum(cached_votes_score) DESC").group("name").distinct
+  @users= User.joins(:posts, :comments).order("sum(comments.cached_votes_score) DESC").group("name").distinct
+	
+
 end
 
 def edit
 
 end
-
-
 
 def update
 	 @user = User.find(params[:id])

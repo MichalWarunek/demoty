@@ -45,7 +45,13 @@
  <div class="panel panel-footer text-center">
 
 <%= link_to 'Edytuj', edit_post_path(@post), class: 'btn btn-primary' %> 
+
+      <%if current_user.admin != true %>
 <%= link_to 'Usuń', @post, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-danger' %>
+
+  <%end %>
+
+
 
 
 

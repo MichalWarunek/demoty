@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
 
+  before_action :set_post , except: [:upvote, :downvote]
   before_action :authenticate_user!
   before_action :current_user, only: [:upvote, :downvote, :show, :index]
+  
 
 
   def index
@@ -20,6 +22,9 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
        if @comment.save
+        #tutaj
+        create_notification @post, @comment
+
         make_child_comment
         format.html  { redirect_to(:back, :notice => 'Komentarz został dodany.') }
       else
@@ -27,6 +32,19 @@ class CommentsController < ApplicationController
       end
     end
   end
+
+#tutaj
+ # private
+
+  def create_notification(post, comment)
+    return if post.user.id == current_user.id
+    Notification.create(user_id: post.user.id,
+                        notified_by_id: current_user.id,
+                        post_id: post.id,
+                        identifier: comment.id,
+                        notice_type: 'skomentował')
+  end 
+
 
   def upvote
     @comment = Comment.find(params[:id])
@@ -39,6 +57,7 @@ class CommentsController < ApplicationController
     @comment.downvote_from current_user
     redirect_to :back
   end
+
   private
 
   def comment_params
@@ -64,6 +83,10 @@ class CommentsController < ApplicationController
     return "" if comment_id.blank?
     parent_comment = Comment.find comment_id
     @comment.move_to_child_of(parent_comment)
+  end
+
+  def set_post
+    @post = Post.find(params[:post_id])
   end
 
 end  

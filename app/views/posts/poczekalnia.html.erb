@@ -5,8 +5,8 @@
 
 
 <% @posts.each do |post| %>
-     <div class="panel panel-default col-md-offset-3 col-md-6">
-     <div class="panel panel-heading">
+     
+     <div class="panel panel-heading col-md-offset-3 col-md-6">
       
     
     
@@ -51,8 +51,10 @@
         <span class="badge"><%= post.get_downvotes.size %></span>
         <% end %>
 
-        <%= link_to 'Usuń', post, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-danger' %>
-    
+         <%if current_user.admin != true %>
+
+        <%= link_to 'Usuń', post, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-danger' %>    
+        <%end %>
 
    <% else %>
 
@@ -92,7 +94,7 @@
 
           </div>
         </div>
-      </div>
+     
   
    
 <% end %>
