@@ -1,15 +1,21 @@
 <% @user.followers.each do |user| %>
-<div class="panel panel-default col-md-offset-3 col-md-6">
+<div class="panel panel-default">
 <br>
-<div class="panel panel-heading">
+<div class="panel panel-heading col-md-offset-3 col-md-6">
      
 
 
 <%= avatar_for(user, size: 50) %>
+
+<div class="center">
+<%if user.banned? %>
+<span class="red">[Zbanowany]</span>
+<%end%>
+</div>
 <h1> <%=link_to user.name, user %></h1>
 
 
  
 </div>
-</div>
+
 <%end%>

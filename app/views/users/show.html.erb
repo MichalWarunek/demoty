@@ -17,27 +17,11 @@
       <h4>Ilość punktów za obrazki: <%= @user.posts.sum(&:cached_votes_score)%></h4>
       <h4>Ilość punktów za komentarze: <%= @user.comments.sum(&:cached_votes_score)%></h4>
 
-      <% @users.each_with_index do |user,index| %>
 
- <div class="panel panel-default col-md-offset-4 col-md-4 right">
+  
+
+      <h4>Miejsce w rankingu: (?/<%= @users_count%>)</h4>
  
-  <div class="center">
-  
-  <% if index == 0 %>
-
-  <% else %>
-
-  <% end %>
-  
-        <h4><b><%=index+1%><b></h4>
-        <h4><%=user.name%></h4>
-      
-  </div>
-  </div>
-  
-
-      <h4>Miejsce w rankingu: (<%=index+1%>/<%= @users_count%>)</h4>
-      <%end%>
       <h4>Obserwujących: <%= @user.followers_count %></h4>
       <h4>Obserwowanych: <%= @user.follow_count %></h4>
 

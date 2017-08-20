@@ -10,7 +10,7 @@
 
 <p>
 
-  <%=link_to @post.content, "http://#{@post.content}" %>
+Źródło: <%=link_to @post.content, "http://#{@post.content}" %>
 
 
 </p>
@@ -31,14 +31,14 @@
        </strong>
        
         
-</div>
+
 
 
 <div class="center">
 <%= link_to "UDOSTĘPNIJ", "https://www.facebook.com/sharer/sharer.php?u=#{post_url(@post)}", :target => :blank, class: 'btn btn-primary' %>    
 </div>
 
-
+<br>
 <% if @post.user == @current_user %>
 
 
@@ -114,3 +114,4 @@
        
  <%end%>
 
+</div>

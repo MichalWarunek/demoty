@@ -14,12 +14,34 @@ def show
 	
 end
 
+if Rails.env.production?
+
+def ranking
+
+select_clause = <<~SQL
+  users.*,
+  (
+    DENSE_RANK() OVER(
+      ORDER BY (
+        SELECT SUM(cached_votes_score) FROM posts WHERE user_id = users.id
+      ) DESC
+    )
+  ) as rank
+SQL
+
+@users = User.select( select_clause ).to_a # .order('rank').to_a if needed
+@users.first.rank # 1
+
+end
+
+else
 
 def ranking
  # @users= User.joins(:posts).order("sum(cached_votes_score) DESC").group("name").distinct
   @users= User.joins(:posts, :comments).order("sum(comments.cached_votes_score) DESC").group("name").distinct
 	
 
+end
 end
 
 def edit
